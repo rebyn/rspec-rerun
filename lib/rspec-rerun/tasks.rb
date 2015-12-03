@@ -6,6 +6,9 @@ module RSpec
     module Tasks
       class << self
         def rspec_options(args, spec_files = nil)
+          if spec_files.nil?
+            spec_files = ENV['RSPEC_FILES']
+          end
           options = [
             spec_files,
             '--require', 'rspec-rerun/formatter',
