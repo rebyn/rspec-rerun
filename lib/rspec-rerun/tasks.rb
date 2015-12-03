@@ -3,6 +3,9 @@ module RSpec
     module Tasks
       class << self
         def rspec_opts(args, spec_files = nil)
+          if spec_files.nil?
+            spec_files = ENV['RSPEC_FILES']
+          end
           opts = [
             spec_files,
             '--require', File.join(File.dirname(__FILE__), '../rspec-rerun'),
